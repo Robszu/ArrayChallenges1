@@ -35,6 +35,26 @@
 
 <button></button>
 <script>
+  const div = document.querySelectorAll('div');
+  const button = document.querySelector('button');
+
+  function logText(e) {
+    console.log(this.classList.value);
+    // e.stopPropagation(); // stop bubbling! only one
+    // console.log(this);
+  }
+
+  div.forEach(div => div.addEventListener('click', logText, {
+    capture: false, // defoult, from inside to outside, when true from outside to inside
+    once: true // the same as div.removeEventListener('click', lgText)
+  }));
+
+  button.addEventListener('click', () => {
+    console.log("Click!!!!!!");
+  }, {
+    once: true
+  })
+
 </script>
 </body>
 </html>
